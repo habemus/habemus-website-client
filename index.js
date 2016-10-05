@@ -7,6 +7,12 @@ function HWebsiteClient(options) {
   this.serverURI = options.serverURI.replace(TRAILING_SLASH_RE, '');
 }
 
+/**
+ * Expose errors
+ * @type {Object}
+ */
+HWebsiteClient.errors = HWebsiteClient.prototype.errors = require('./errors');
+
 Object.assign(HWebsiteClient.prototype, require('./aux'));
 Object.assign(HWebsiteClient.prototype, require('./methods/public'));
 Object.assign(HWebsiteClient.prototype, require('./methods/shared'));
