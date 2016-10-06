@@ -1,3 +1,9 @@
+// third-party
+const Bluebird = require('bluebird');
+
+// own
+const errors = require('../errors');
+
 exports.resolve = function (authToken, domain) {
   if (!authToken) { return Bluebird.reject(new errors.Unauthorized()); }
 
@@ -6,7 +12,7 @@ exports.resolve = function (authToken, domain) {
   }
 
   return this._authReq(
-    'POST',
+    'GET',
     '/website/' + domain + '/resolve',
     {
       authToken: authToken,
