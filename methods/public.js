@@ -41,7 +41,7 @@ exports.getDomainRecord = function (authToken, projectId, recordId) {
   );
 };
 
-exports.verifyDomainRecord = function (authToken, projectId, recordId) {
+exports.restartDomainRecordVerification = function (authToken, projectId, recordId) {
   if (!authToken) { return Bluebird.reject(new errors.Unauthorized()); }
 
   if (!projectId) {
@@ -54,7 +54,7 @@ exports.verifyDomainRecord = function (authToken, projectId, recordId) {
 
   return this._authReq(
     'POST',
-    '/project/' + projectId + '/domain-record/' + recordId + '/verify',
+    '/project/' + projectId + '/domain-record/' + recordId + '/restart-verification',
     {
       authToken: authToken
     }
